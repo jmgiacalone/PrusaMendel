@@ -10,7 +10,6 @@
 include <configuration.scad>
 
 /**
- * @id belt-clamp
  * @name Belt clamp
  * @category Printed
  */ 
@@ -19,8 +18,11 @@ module beltclamp(){
 difference(){
 cube([26,10,4]);
 translate(v = [4, 5, 0]){
-	cylinder(h=10, r=m3_diameter/2, $fn=9, center=true);
-	translate(v = [18, 0, 0]) cylinder(h=10, r=m3_diameter/2, $fn=9, center=true);
+	//cylinder(h=10, r=m3_diameter/2, $fn=9, center=true);
+	polyhole(10,m3_diameter);
+	translate(v = [18, 0, 0])
+		//cylinder(h=10, r=m3_diameter/2, $fn=9, center=true);
+		polyhole(10,m3_diameter);
 }}
 }
 beltclamp();

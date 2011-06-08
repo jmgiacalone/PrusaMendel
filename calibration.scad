@@ -9,8 +9,7 @@
 include <configuration.scad>
 
 /**
- * @id calibration
- * @name Configuration test
+ *@name Configuration test
  */
 module configurationtest(){
 difference(){

@@ -11,7 +11,6 @@
 include <configuration.scad>
 
 /**
- * @id bar-clamp
  * @name Bar clamp
  * @category Printed
  * @using 2 m8nut
@@ -35,3 +34,4 @@ difference(){
 }
 }
 barclamp();
+//translate([0,0,16]) barclamp();

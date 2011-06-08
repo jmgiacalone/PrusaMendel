@@ -10,7 +10,6 @@
 include <configuration.scad>
 
 /**
- * @id z-motor-mount
  * @name Z motor mount
  * @category Printed
  * @using 2 m3x25
@@ -38,12 +37,16 @@ rotate ([0,0,-135]) translate([20,0,0]) cube(size = [9,3.2,25], center = true);
 translate(v=[0,0,-10])cylinder(h = 20, r=13);
 
 translate(v=[30,0,-10]) cylinder(h = 20, r=4.2);
-translate(v=[-26,29.25,0]) rotate(a=[0,90,0]) cylinder(h = 58, r=m8_diameter/2);
-translate(v=[-26,-29.25,0]) rotate(a=[0,90,0]) cylinder(h = 58, r=m8_diameter/2);
+translate(v=[-26,29.25,0]) rotate(a=[0,90,0]) //cylinder(h = 58, r=m8_diameter/2);
+	polyhole(58,m8_diameter);
+translate(v=[-26,-29.25,0]) rotate(a=[0,90,0]) //cylinder(h = 58, r=m8_diameter/2);
+	polyhole(58,m8_diameter);
 
 
-translate(v=[16,7,0]) rotate(a=[0,90,0]) cylinder(h = 15, r=m3_diameter/2);
-translate(v=[16,-7,0]) rotate(a=[0,90,0]) cylinder(h = 15, r=m3_diameter/2);
+translate(v=[16,7,0]) rotate(a=[0,90,0]) //cylinder(h = 15, r=m3_diameter/2);
+	polyhole(15,m3_diameter);
+translate(v=[16,-7,0]) rotate(a=[0,90,0]) //cylinder(h = 15, r=m3_diameter/2);
+	polyhole(15,m3_diameter);
 translate(v=[0,7,0]) rotate(a=[0,90,0]) rotate(a=[0,0,30]) cylinder(h = 24, r=m3_nut_diameter/2,$fn =6);
 translate(v=[0,-7,0]) rotate(a=[0,90,0]) rotate(a=[0,0,30]) cylinder(h = 24, r=m3_nut_diameter/2, $fn=6);
 

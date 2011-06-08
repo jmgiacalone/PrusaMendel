@@ -5,7 +5,6 @@ include <configuration.scad>
 
 
 /**
- * @id pulley
  * @name Pulley
  * @category Printed
  * @using 1 m3nut
@@ -41,7 +40,8 @@ module pulley()
    }
    
    //shaft hole
-    translate([0,0,-1])cylinder(r=motor_shaft/2+0.1,h=22,$fn=15);
+    translate([0,0,-1]) //cylinder(r=motor_shaft/2+0.1,h=22,$fn=15);
+	polyhole(22,motor_shaft);
     		
  //captive nut and grub holes
     for(j=[1:1]) rotate([0,0,j*(360/3)])
@@ -49,11 +49,11 @@ module pulley()
 	union()
 	{
 		//entrance
-		translate([0,-3,15]) cube([8.6,7,3],center=true);
+		translate([0,-3,15]) cube([5.8,7,3],center=true);
 		//nut
-		translate([0,0,13.6]) rotate([0,0,30])cylinder(r=4.22,h=2.8,$fn=6);
+		translate([0,0,13.6]) rotate([0,0,30])cylinder(r=5.8 / sqrt(3),h=2.8,$fn=6);
 		//grub hole
-		translate([0,0,9]) cylinder(r=1.9,h=10);
+		translate([0,0,9]) cylinder(r=3.3/2,h=10);
 	}
 
  }

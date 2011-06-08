@@ -11,7 +11,6 @@
 include <configuration.scad>
 
 /**
- * @id endstop-holder
  * @name Endstop holder
  * @category Printed
  * @using 1 m3x20
@@ -36,7 +35,8 @@ difference(){
 
 
 	translate([9, outer_diameter-opening_size/2, 0]) cube([18,opening_size,20]);
-	translate([outer_diameter, outer_diameter, 0]) cylinder(h =20, r = m8_diameter/2, $fn = 18);
+	translate([outer_diameter, outer_diameter, 0]) //cylinder(h =20, r = m8_diameter/2, $fn = 18);
+		polyhole(20,m8_diameter);
 	translate([17, 17, 5]) rotate([90, 0, 0]) cylinder(h =20, r = m3_diameter/2, $fn = 10);
 	translate([-4, 17, 5]) rotate([90, 0, 0]) cylinder(h =20, r = m3_diameter/2, $fn = 10);
 	translate([-(4+screw_hole_spacing), 17, 5]) rotate([90, 0, 0]) cylinder(h =20, r = m3_diameter/2, $fn = 10);

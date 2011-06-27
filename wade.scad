@@ -304,10 +304,16 @@ module block_holes()
 			translate([-608_diameter,-608_diameter/2,-1]) cube([608_diameter,608_diameter/2,7]);
 		
 			translate([0,0,22])
-			b608(h=7);
+			union(){
+				b608(h=7);
+				cylinder(h=2,r=m8_diameter/2+3,center=true);
+			}
 		
 			translate([-13,0,9.5])
-			b608(h=wade_block_depth);
+			union(){
+				b608(h=wade_block_depth);
+				translate([13,0,-3.5]) cylinder(h=2,r=m8_diameter/2+3,center=true);
+			}
 		
 			translate([0,0,8+layer_height-2.5])
 			cylinder(r=m8_clearance_hole/2,h=wade_block_depth-(8+layer_height)+10);	
@@ -373,7 +379,7 @@ module motor_mount()
 
 module motor_mount_holes()
 {
-	radius=3.4/2;
+	radius=3.8/2;
 	slot_left=1;
 	slot_right=2;
 
@@ -443,7 +449,7 @@ module wadeidler()
 			translate([0,-idler_hinge_r-0.5,0])
 			cube([idler_hinge_r*2+1,idler_hinge_r*2+1,idler_short_side-2*idler_hinge_width],center=true);
 			translate([idler_hinge_r-0.5,-1,0])
-			#cube([idler_hinge_r*2+4,idler_hinge_r*2+4,idler_short_side-2*idler_hinge_width],center=true);
+			cube([idler_hinge_r*2+4,idler_hinge_r*2+4,idler_short_side-2*idler_hinge_width],center=true);
 		}
 
 		//Bearing cutout.
@@ -593,7 +599,7 @@ module peek_reprapsource_holes ()
 
 module mendel_parts_v6_hotend () 
 {
-	extruder_recess_d=13.4;
+	extruder_recess_d=15.4;
 	extruder_recess_h=10; 
 	hole_axis_rotation=42.5; 
 	hole_separation=30;
@@ -604,6 +610,10 @@ module mendel_parts_v6_hotend ()
 	translate([0,0,-1])
 	cylinder(r=extruder_recess_d/2,h=extruder_recess_h+1); 
 	
+	//cone
+	translate([0,0,22])
+	cylinder(r1=filament_feed_hole_d/2,r2=m3_diameter*1.4,h=9);
+
 	for(mount=[-1,1])
 	rotate([0,0,-hole_axis_rotation+90+90*mount])
 	translate([hole_separation/2,0,0])
@@ -615,7 +625,7 @@ module mendel_parts_v6_hotend ()
 		rotate(hole_axis_rotation)
 		{
 //			rotate(30)
-			#cylinder(r=m4_nut_diameter/2,h=trap_height+hole_slot_height,$fn=6);
+			cylinder(r=m4_nut_diameter/2,h=trap_height+hole_slot_height,$fn=6);
 			translate([0,-m4_nut_diameter,hole_slot_height/2+trap_height]) 
 			cube([m4_nut_diameter,m4_nut_diameter*2,hole_slot_height],
 					center=true);
